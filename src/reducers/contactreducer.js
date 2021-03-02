@@ -1,82 +1,22 @@
-import { CLEAR_CONTACT, CREATE_CONTACT, DELETE_ALL, DELETE_CONTACT, GET_CONTACT, SELECT_CONTACT, UPDATE_CONTACT } from "../constants/types";
+import axios from "axios";
+import {  CREATE_CONTACT, DELETE_CONTACT, GET_CONTACT,  UPDATE_CONTACT } from "../constants/types";
+//*Constant that will take the axios requests for the app
+const api = axios.create({baseURL: `http://localhost:8080`});
 //*Our initial state will have an array of objects, a property that it is null and an empty array
 const initialState = {
   //*Pulling initial data from a pre-created Json file from https://jsonplaceholder.typicode.com/
   contacts: [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      email: "Sincere@april.biz",
-      phone: "1-770-736-8031 x56442",
-      website: "hildegard.org",
-    },
-    {
-      id: 2,
-      name: "Ervin Howell",
-      email: "Shanna@melissa.tv",
-      phone: "010-692-6593 x09125",
-      website: "anastasia.net",
-    },
-    {
-      id: 3,
-      name: "Clementine Bauch",
-      email: "Nathan@yesenia.net",
-      phone: "1-463-123-4447",
-      website: "ramiro.info",
-    },
-    {
-      id: 4,
-      name: "Patricia Lebsack",
-      email: "Julianne.OConner@kory.org",
-      phone: "493-170-9623 x156",
-      website: "kale.biz",
-    },
-    {
-      id: 5,
-      name: "Chelsey Dietrich",
-      email: "Lucio_Hettinger@annie.ca",
-      phone: "(254)954-1289",
-      website: "demarco.info",
-    },
-    {
-      id: 6,
-      name: "Mrs. Dennis Schulist",
-      email: "Karley_Dach@jasper.info",
-      phone: "1-477-935-8478 x6430",
-      website: "ola.org",
-    },
-    {
-      id: 7,
-      name: "Kurtis Weissnat",
-      email: "Telly.Hoeger@billy.biz",
-      phone: "210.067.6132",
-      website: "elvis.io",
-    },
-    {
-      id: 8,
-      name: "Nicholas Runolfsdottir V",
-      email: "nick@email.org",
-      phone: "586.493.6943 x140",
-      website: "jacynthe.com",
-    },
-    {
-      id: 9,
-      name: "Glenna Reichert",
-      email: "Glena.Reich@conrad.com",
-      phone: "(775)976-6794 x41206",
-      website: "conrad.com",
-    },
-    {
-      id: 10,
-      name: "Clementina DuBuque",
-      email: "clementinaD@ambrose.net",
-      phone: "024-648-3804",
-      website: "ambrose.net",
-    },
+
   ],
   contact: null,
-  selectedContacts: [],
 };
+
+
+  api.get('/users').then(response => {
+  console.log(response);
+  for (let i = 0; i < response.data.length; i++) {
+    initialState.contacts.push(response.data[i]);
+    }})
 
 //*Creating a reducer that takes the state and action as arguments and return a NewState with an arrow function
 //* We use the switch keyword to do something different depending on the type of actions or "cases" and what will return
@@ -121,24 +61,7 @@ export const contactReducer = (state = initialState, action) => {
         //*our payload id and then will return the new array
             contacts: state.contacts.filter((contact)=>contact.id != action.payload)
         }
-    case SELECT_CONTACT:
-        return{
-            ...state,
-        //*on this reducer our empty array will be equal to the payload
-            selectedContacts:action.payload
-        }
-        //*this reducer will clear all selected contacts
-    case CLEAR_CONTACT:
-        return{
-            ...state,
-            selectedContacts:[]
-        }
-        //*this reducer will substitute all the contacts array using empty array
-    case DELETE_ALL:
-        return{
-            ...state,
-            contacts: []
-        }
+
     default:
       return state;
   }

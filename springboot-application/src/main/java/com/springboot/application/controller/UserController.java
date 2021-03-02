@@ -28,7 +28,7 @@ public class UserController
 	@GetMapping("/{id}")
 	public Optional<UserRecord> getUserById(@PathVariable (value = "id") Integer id) {
 		return this.userService.findById(id);
-//		 .orElseThrow(() -> new ResourceNotFoundException("The User is not found with email "+email));
+
 	}
 
 	@RequestMapping(value="/addUser", method=RequestMethod.POST)
@@ -44,7 +44,6 @@ public class UserController
 	@PutMapping("/{id}")
 	public void updateUser(@RequestBody UserRecord user, @PathVariable ("id") Integer id) {
 		userService.updateUser(user, id);
-		
 
 	}
 

@@ -11,10 +11,6 @@ import { Editcontact } from "./components/contacts/Editcontact";
 //! We do this by rendering a <Provider> component around our entire <App> components, and passing the Redux store as a prop to <Provider>.
 //! After we do this once, every component in the application will be able to access the Redux store if it needs to.
 //! Also we need to wrap our components inside of router and inside use switch to determine the route of those components
-//* [user, setUser] = this.useState('');
-//* { user ?  : }
-//* 
-//* <Route exact path='/' render{()=><Login setUser={setUser} }/>
 
 function App() {
   return (

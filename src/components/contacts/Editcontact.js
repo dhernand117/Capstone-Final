@@ -44,8 +44,6 @@ export const Editcontact = () => {
       history.push("/");
     }
 
-
-
   return (
     <div>
       <div className="card border-3 shadow ">

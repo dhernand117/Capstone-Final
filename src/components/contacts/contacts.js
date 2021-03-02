@@ -6,7 +6,7 @@ import { deleteContact } from '../../actions/contactaction';
 //* Using the avatar method to create our contact avatar monogram
 //*This are the table formats that will be returned in our map function and we pass props to our function to use the mapped index
 //*Contacts will receive 2 props from contact.js
-export const Contacts = ({ contact, SelectAll }) => {
+export const Contacts = ({ contact }) => {
   //*adding the dispatch method to call the action from our store
   const dispatch = useDispatch();
   //*destructuring our contact info into the following components
@@ -15,7 +15,6 @@ export const Contacts = ({ contact, SelectAll }) => {
     <tr>
       <th scope="row">
         <div className="custom-control custom-checkbox">
-          <input checked={SelectAll} type="radio" className="custom-control-input" />
           <label className="custom-control-label" />
         </div>
       </th>
