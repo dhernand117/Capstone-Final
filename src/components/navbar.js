@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import {Link} from "react-router-dom"
 //*Using bootstrap for easier styling from https://getbootstrap.com/docs/5.0/components/navbar/

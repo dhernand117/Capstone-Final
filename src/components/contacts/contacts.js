@@ -19,7 +19,6 @@ export const Contacts = ({ contact, SelectAll }) => {
           <label className="custom-control-label" />
         </div>
       </th>
-      <td>{id}</td>
       <td>
         <Avatar className="me-3" name={name} size="40" round={true} />
         {name}

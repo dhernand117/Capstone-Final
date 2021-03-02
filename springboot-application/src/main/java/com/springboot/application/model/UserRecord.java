@@ -8,7 +8,8 @@ public class UserRecord {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
-	private int contactid;
+	@Column (name="id")
+	private int id;
 	@Column (name="name")
 	private String name;
 	@Column (name="phone")
@@ -20,18 +21,22 @@ public class UserRecord {
 	
 	public UserRecord() {
 	
-		
 	}
 	
 	//Constructor
-	public UserRecord(String name,String phone, String email, String website) {
+	public UserRecord(String name,String phone, String email, String website, Integer id) {
 		super();
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
 		this.website = website;
+		this.id= id;
 	}
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -48,13 +53,9 @@ public class UserRecord {
 		this.website = website;
 	}
 
-	public void setId(int contactid) {
-		this.contactid = contactid;
-	}
-
 	//Getters & Setters
 	public int getId() {
-		return contactid;
+		return id;
 	}
 //	public void setId(int id) {
 //		this.id = id;

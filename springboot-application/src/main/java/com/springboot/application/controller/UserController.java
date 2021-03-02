@@ -23,73 +23,30 @@ public class UserController
 		System.out.println("getAllUser");
 		System.out.println(userService.getAllUsers());	//test
 		return userService.getAllUsers();    
-	} 
+	}
 	
-	@PostMapping
-	public List<UserRecord> createUser()  { 
-		System.out.println("getAllUser");
-		System.out.println(userService.getAllUsers());	//test
-		return userService.getAllUsers();    
-	} 
+	@GetMapping("/{id}")
+	public Optional<UserRecord> getUserById(@PathVariable (value = "id") Integer id) {
+		return this.userService.findById(id);
+//		 .orElseThrow(() -> new ResourceNotFoundException("The User is not found with email "+email));
+	}
 
-	@RequestMapping(value="/add-user", method=RequestMethod.POST)
+	@RequestMapping(value="/addUser", method=RequestMethod.POST)
 	public void addUser(@RequestBody UserRecord userRecord)  
 	{    
 		userService.addUser(userRecord);    
-	}       
-} 
+	}   
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable ("id") Integer id){
+		 userService.deleteUser(id);		
+	}
+	
+	@PutMapping("/{id}")
+	public void updateUser(@RequestBody UserRecord user, @PathVariable ("id") Integer id) {
+		userService.updateUser(user, id);
+		
 
-//TEST CODE ////////////////////////////////
-//@CrossOrigin(origins = "http://localhost:3000")
-//@RequestMapping("/users")
-//public class UserController {
-//	@Autowired
-//	private UserController userRepository;
-//	
-//	//get all users api
-//	@GetMapping 
-//	public List<UserRecord> getAllUsers(){
-//		System.out.println("Reaching out the GET Method in the controller of UserConroller Java");
-//		return this.userRepository.findAll();
-//	}
-//	
-//	//get a user api by id 
-//	@GetMapping("/{id}")
-//	public UserRecord getUserById(@PathVariable (value = "id") Integer id) {
-//		return this.userRepository.findById(id)
-//		 .orElseThrow(() -> new ResourceNotFoundException("The User is not found with id"+id));
-//	}
-//	
-//	//create user api 
-//	@PostMapping 
-//	public UserRecord createUser(@RequestBody UserRecord user) {
-//		System.out.println(user);
-//		return this.userRepository.save(user);
-//	}
-//	
-//		
-//	//update user api by id - which is email here
-//	@PutMapping("/{id}")
-//	public UserRecord udateUser(@RequestBody UserRecord user, @PathVariable ("id") String id) {
-//		
-//		UserRecord existingUser = this.userRepository.findById(id)
-//			.orElseThrow(() -> new ResourceNotFoundException("The User is not found with id "+id));
-//		existingUser.setId(user.getId());
-//		existingUser.setName(user.getName());
-//		existingUser.setPhone(user.getPhone());
-//		existingUser.setWebsite(user.getWebsite());
-//		return this.userRepository.save(existingUser);
-//		
-//	}
-//	//delete user api by email
-//	
-//	@DeleteMapping("/{id}")
-//	public ResponseEntity<UserRecord> deleteUser(@PathVariable ("id") Integer id){
-//		
-//		UserRecord existingUser = this.userRepository.findById(id)
-//				.orElseThrow(() -> new ResourceNotFoundException("The User is not found with id "+id));
-//		this.userRepository.delete(existingUser);
-//		return ResponseEntity.ok().build();
-//		
-//		}
-//	}
+	}
+
+   
+} 

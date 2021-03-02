@@ -56,7 +56,6 @@ export const Contact = () => {
               </div>
               {/* Here we will determine the headers of the info we want to pull from our state in the store.js file */}
             </th>
-            <th>Id</th>
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
