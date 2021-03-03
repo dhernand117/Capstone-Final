@@ -1,20 +1,21 @@
-## TECK STACK USED
----FRONT END
--React
--React-Redux
--React-router
--Redux-devtools-extension
--Bootstrap (styling)
--React Avatar
+# TECH STACK USED
+###FRONT END
+React
+React-Router
+React-Redux
+Redux-Thunk
+Redux-devtools-extension
+Bootstrap (styling)
+React Avatar
 
----BACK END
--MySQL
--Springboot
--Java/Maven
+###BACK END
+MySQL
+Springboot
+Java/Maven
 
----TESTING TOOLS
--Postman for back-end front-end interaction
-## REACT CONTACT LIST
+###TESTING TOOLS
+Postman for back-end front-end interaction
+# REACT CONTACT LIST
 This My contact list app is an easy way to save all your contacts in one simple app that does just that in a easy way
 
 # -PURPOSE
@@ -23,7 +24,7 @@ The main objective for this contact list will be a way to create a full-stack CR
 -TARGET AUDIENCE
 This application will be of use to anyone who wants to have a way to store his contacts in a simple app that does just that and also to see how a full-stack CRUD application works.
 # -PROJECT LINK
-********TO BE CONTINUED************
+TO BE DEPLOYED IN A FUTURE ITERATION
 
 ## -ADDITONAL INFORMATION
 # Getting Started with Create React App
