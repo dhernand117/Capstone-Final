@@ -22,7 +22,7 @@ export const Contact = () => {
             <th>Phone</th>
             <th>Email</th>
             <th>Website</th>
-            <th>Edit/Delete</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

@@ -1,19 +1,29 @@
-## REACT CONTACT LIST
+## TECK STACK USED
+---FRONT END
+-React
+-React-Redux
+-React-router
+-Redux-devtools-extension
+-Bootstrap (styling)
+-React Avatar
 
-# Node Packages used:
--	Redux
--	React-redux
--	React-router
--	Redux-devtool-extension
--	React-avatar
--	Shortid
+---BACK END
+-MySQL
+-Springboot
+-Java/Maven
+
+---TESTING TOOLS
+-Postman for back-end front-end interaction
+## REACT CONTACT LIST
+This My contact list app is an easy way to save all your contacts in one simple app that does just that in a easy way
 
 # -PURPOSE
-The main objective for this contact list will be a way to create a server-less CRUD application that stores Contacts using REACT-REDUX-ROUTER as the main libraries for the project.
-Also added a meme generator that will make API-fetch calls to generate random memes for fun!
+The main objective for this contact list will be a way to create a full-stack CRUD application that stores Contacts using REACT-REDUX-ROUTER ++ for the front-end as well as JAVA-SPRINGBOOT-MYSQL++ for the back-end.
+
 -TARGET AUDIENCE
-This application will be of use to anyone who wants to have a way to store in a memory only app to see how a CRUD application works locally and create sick memes while doing so :happy
+This application will be of use to anyone who wants to have a way to store his contacts in a simple app that does just that and also to see how a full-stack CRUD application works.
 # -PROJECT LINK
+********TO BE CONTINUED************
 
 ## -ADDITONAL INFORMATION
 # Getting Started with Create React App

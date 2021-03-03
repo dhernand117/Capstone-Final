@@ -27,14 +27,14 @@ export const Contacts = ({ contact }) => {
       <td>{website}</td>
       <td>
         <Link to={`/contacts/edit/${id}`}>
-          <span className="material-icons">edit</span>
+          <button className="btn btn-outline-info">Edit</button>
         </Link>
         <Link to="/">
-          <span
-            className="material-icons"
+          <button
+            className="btn btn-outline-danger"
             onClick={() => dispatch(deleteContact(id))}>
-            delete_forever
-          </span>
+            Delete
+          </button>
         </Link>
       </td>
     </tr>
