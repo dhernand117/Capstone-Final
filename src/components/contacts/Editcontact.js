@@ -40,7 +40,7 @@ export const Editcontact = () => {
           email: email,
           website: website
       })
-      dispatch(updateContact(update_contact));
+      dispatch(updateContact(update_contact, parseInt(id)));
       history.push("/");
     }
 

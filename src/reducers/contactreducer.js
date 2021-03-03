@@ -4,21 +4,17 @@ import {  CREATE_CONTACT, DELETE_CONTACT, GET_CONTACT,  UPDATE_CONTACT } from ".
 const api = axios.create({baseURL: `http://localhost:8080`});
 //*Our initial state will have an array of objects, a property that it is null and an empty array
 const initialState = {
-  //*Pulling initial data from a pre-created Json file from https://jsonplaceholder.typicode.com/
-  contacts: [
-
-  ],
+  contacts: [],
   contact: null,
 };
+
 //*Setting the initial state pulling the data from the backend springboot app
   api.get('/users').then(response => {
-  console.log(response);
   for (let i = 0; i < response.data.length; i++) {
     initialState.contacts.push(response.data[i]);
     }})
 
-
-//*Creating a reducer that takes the state and action as arguments and return a NewState with an arrow function
+//*Creating a reducer that takes the state and action as arguments and returns the newStates with an arrow function and switch
 //* We use the switch keyword to do something different depending on the type of actions or "cases" and what will return
 export const contactReducer = (state = initialState, action) => {
   //*linking the payload of the action to a set case
@@ -26,13 +22,8 @@ export const contactReducer = (state = initialState, action) => {
     //*This first case to create our contacts will return an array with our existing contacts + our added input information using the spread operator
     case CREATE_CONTACT:
       let { name, phone, email, website } = action.payload;
-      //TODO apipost/create user call
-      const userRecord = {
-        name,
-        phone,
-        email,
-        website,
-      };
+    //*Destructturing contact to pass as a second argument on the axios POST call
+      const userRecord = {name, phone, email, website,};
 
       api
         .post("users/addUser", userRecord)
@@ -62,20 +53,22 @@ export const contactReducer = (state = initialState, action) => {
         contact: arr,
       };
     case UPDATE_CONTACT:
-      // api
-      //   .put("users/addUser", userRecord)
-      //   .then((res) => console.log(res))
-      //   .catch((error) => console.log(error));
+      const {contact, id} = action.payload;
+      console.log(action.payload);
+      api
+        .put(`users/${id}`, contact)
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error));
+      console.log(contact);
       return {
         ...state,
         //*This case will map once again the contacts array and will pass a ternary operator to determine the updated state
-        contacts: state.contacts.map((contact) =>
+        contacts: state.contacts.map((oldContact) =>
           //*Our ternary will check if the id is the same as the payload id and return the action else will leave the contact as is
-          contact.id == action.payload.id ? action.payload : contact
+          oldContact.id == id ? contact : oldContact
         ),
       };
     case DELETE_CONTACT:
-      console.log(action.payload);
       //*Creating a constant that will take the payload from the action that is an ID as a value
       const contactId = action.payload;
       console.log(contactId);

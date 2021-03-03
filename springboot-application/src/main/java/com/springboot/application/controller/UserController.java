@@ -24,23 +24,24 @@ public class UserController
 		System.out.println(userService.getAllUsers());	//test
 		return userService.getAllUsers();    
 	}
-	
+	//GET
 	@GetMapping("/{id}")
 	public Optional<UserRecord> getUserById(@PathVariable (value = "id") Integer id) {
 		return this.userService.findById(id);
 
 	}
-
+	//POST
 	@RequestMapping(value="/addUser", method=RequestMethod.POST)
-	public void addUser(@RequestBody UserRecord userRecord)  
+	public UserRecord addUser(@RequestBody UserRecord userRecord)  
 	{    
-		userService.addUser(userRecord);    
+		return userService.addUser(userRecord);    
 	}   
+	//DELETE
 	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable ("id") Integer id){
 		 userService.deleteUser(id);		
 	}
-	
+	//UPDATE
 	@PutMapping("/{id}")
 	public void updateUser(@RequestBody UserRecord user, @PathVariable ("id") Integer id) {
 		userService.updateUser(user, id);

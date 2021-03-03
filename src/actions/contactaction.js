@@ -11,9 +11,9 @@ export const getContact = (id) => ({
     payload:id
 })
 //*This action will modify the contact information
-export const updateContact = (contact) => ({
+export const updateContact = (contact, id) => ({
   type: UPDATE_CONTACT,
-  payload: contact,
+  payload: {contact, id}
 });
 //*This action will delete the contact(s)
 export const deleteContact = (id) => ({

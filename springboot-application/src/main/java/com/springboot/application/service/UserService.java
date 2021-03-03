@@ -26,9 +26,9 @@ public class UserService
 		return userRecords;    
 	} 
 	
-	public void addUser(UserRecord userRecord)  
+	public UserRecord addUser(UserRecord userRecord)  
 	{    
-		userRepository.save(userRecord);    
+		return userRepository.save(userRecord);    
 	}    
 	public ResponseEntity<UserRecord> deleteUser(Integer userId)
 	{    
