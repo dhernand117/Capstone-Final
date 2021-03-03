@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../actions/contactaction';
-import shortid from "shortid";
+import { addAndUpdateContact } from '../../actions/contactaction';
+// import shortid from "shortid";
 import { useHistory } from 'react-router-dom';
 //*Short Id is used to generate unique Id's automatically for our objects
 //*Used cards and forms from bootstrap
@@ -25,13 +25,13 @@ export const Addcontact = () => {
         console.log("website:", website);
         //* Creating a newContact object that holds the information and passing it to the dispatch method to use our action addContact
         const newContact = {
-            id: shortid.generate(),
+            // shortId: shortid.generate(),
             name: name,
             phone: phone,
             email: email,
             website: website
         }
-        dispatch(addContact(newContact));
+        dispatch(addAndUpdateContact(newContact));
         //*Using addHistory method from router to take us back to the contact list after adding our information
         history.push("/");
     }

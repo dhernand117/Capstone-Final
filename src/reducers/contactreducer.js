@@ -1,5 +1,5 @@
-import axios from "axios";
 import {  CREATE_CONTACT, DELETE_CONTACT, GET_CONTACT,  UPDATE_CONTACT } from "../constants/types";
+import axios from "axios";
 //*Constant that will take the axios requests for the app
 const api = axios.create({baseURL: `http://localhost:8080`});
 //*Our initial state will have an array of objects, a property that it is null and an empty array
@@ -21,14 +21,6 @@ export const contactReducer = (state = initialState, action) => {
   switch (action.type) {
     //*This first case to create our contacts will return an array with our existing contacts + our added input information using the spread operator
     case CREATE_CONTACT:
-      let { name, phone, email, website } = action.payload;
-    //*Destructturing contact to pass as a second argument on the axios POST call
-      const userRecord = {name, phone, email, website,};
-
-      api
-        .post("users/addUser", userRecord)
-        .then((res) => console.log(res))
-        .catch((error) => console.log(error));
 
       return {
         ...state,
