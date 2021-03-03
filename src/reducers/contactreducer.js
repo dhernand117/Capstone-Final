@@ -10,13 +10,13 @@ const initialState = {
   ],
   contact: null,
 };
-
-
+//*Setting the initial state pulling the data from the backend springboot app
   api.get('/users').then(response => {
   console.log(response);
   for (let i = 0; i < response.data.length; i++) {
     initialState.contacts.push(response.data[i]);
     }})
+
 
 //*Creating a reducer that takes the state and action as arguments and return a NewState with an arrow function
 //* We use the switch keyword to do something different depending on the type of actions or "cases" and what will return
@@ -25,6 +25,12 @@ export const contactReducer = (state = initialState, action) => {
   switch (action.type) {
     //*This first case to create our contacts will return an array with our existing contacts + our added input information using the spread operator
     case CREATE_CONTACT:
+
+    //TODO apipost/create user call
+      // api.post("users/addUser", {
+      //   contacts: [action.payload, ...state.contacts],
+      // });
+     
       return {
         ...state,
         contacts: [action.payload, ...state.contacts],
@@ -55,6 +61,10 @@ export const contactReducer = (state = initialState, action) => {
             ),
         }
     case DELETE_CONTACT:
+      //TODO Delete by id axioscall
+      // const contactId = initialState.contacts[0];
+      // console.log(contactId);
+      // api.delete(`users/${contactId}`)
         return {
             ...state,
         //* This case will use the filter method to return a new array with the function that checks if the id from our array is not equal to
